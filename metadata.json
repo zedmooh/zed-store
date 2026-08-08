@@ -1,0 +1,6 @@
+{
+  "name": "صفحة هبوط الدفع عند الاستلام - الجزائر",
+  "description": "قالب صفحة مبيعات متوافق مع سوق الجزائر (Paiement à la livraison) بتصميم YouCan إلكتروني ديناميكي باللغة العربية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

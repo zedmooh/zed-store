@@ -1,0 +1,179 @@
+[
+  {
+    "id": "collier-lune",
+    "title": "قلادة هلال القمر المطلي بالذهب عيار 18 - تصميم أنيق وفاخر",
+    "subtitle": "لمسة أناقة ساحرة تناسب جميع المناسبات - إصدار محدود مع علبة هدايا مجانية",
+    "price": 3200,
+    "old_price": 4800,
+    "currency": "د.ج",
+    "rating": 4.9,
+    "reviews_count": 128,
+    "stock_remaining": 7,
+    "badge": "الأكثر مبيعاً 🔥",
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoEfc2caVWPiK53JNKhih21jgCkLGYQmXGtziSY9iplw&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Hh4Q34QnBV6yEnk4aKv1zU3f7GeUzTWgmQQSAVVcUA&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzIvHxnMRSuQ_4AwbO6qYAkVjxA5vB1HjnYbziL0o0uA&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZceof18I32gJybykLwmFPG9Hs0gOdFI98uo2AlI5dDw&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZceof18I32gJybykLwmFPG9Hs0gOdFI98uo2AlI5dDw&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTClKdzpk5rWsdJmtxLXCLOLKeXWu6Pq_C85Qte9A6WhA&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTClKdzpk5rWsdJmtxLXCLOLKeXWu6Pq_C85Qte9A6WhA&s=10"
+    ],
+    "variants": [
+      {
+        "id": "gold-18k",
+        "name": "ذهب عيار 18 (Gold 18K)"
+      },
+      {
+        "id": "silver-925",
+        "name": "فضة ناصعة (Silver 925)"
+      }
+    ],
+    "description": "قلادة مميزة بتصميم هلال القمر الأنيق، مصنوعة بمهارة عالية ومطلية بماء الذهب عيار 18 المقاوم للتغير والماء. تأتي في علبة هدايا فاخرة مجانية، وهي خيار مثالي للتقديم كهدية راقية أو لإضافة لمسة من الرقي والفخامة لإطلالتك اليومية.",
+    "features": [
+      "طلاء ذهب بريميوم عيار 18 مقاوم للتغير والماء",
+      "سلسلة رفيعة أنيقة قابلة للتعديل حسب الطول المرغوب",
+      "تأتي مع علبة هدايا مخملية فاخرة مجاناً مع كل طلب",
+      "ضمان جودة حقيقي لمدة سنة كاملة من تاريخ الشراء",
+      "توصيل سريع وآمن لجميع 58 ولاية مع خيار الفحص عند الاستلام"
+    ],
+    "reviews": [
+      {
+        "author": "أمينة - الجزائر العاصمة",
+        "comment": "ما شاء الله القلادة روعة بزاف والشين جات هايلة، وصلتي في يومين شكراً لكم!",
+        "rating": 5,
+        "date": "منذ يومين"
+      },
+      {
+        "author": "مريم - وهران",
+        "comment": "الجودة ممتازة والعلبة الفاخرة عجبتني بزاف، ربي يوفقكم خاوتي.",
+        "rating": 5,
+        "date": "منذ 4 أيام"
+      },
+      {
+        "author": "ياسمين - قسنطينة",
+        "comment": "توصيل سريع والتغليف راقي جداً، ننصحكم بيهم بدون تردد!",
+        "rating": 5,
+        "date": "منذ أسبوع"
+      }
+    ]
+  },
+  {
+    "id": "montre-homme",
+    "title": "ساعة رجالية كلاسيكية فاخرة مضادة للماء - حزام جلدي أصلي",
+    "subtitle": "تصميم سويسري عالي الدقة لإطلالة رجالية جذابة ومميزة لكل الأوقات",
+    "price": 5500,
+    "old_price": 8200,
+    "currency": "د.ج",
+    "rating": 4.8,
+    "reviews_count": 94,
+    "stock_remaining": 4,
+    "badge": "عرض خاص - خصم 33% ⏳",
+    "images": [
+      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      {
+        "id": "black-leather",
+        "name": "حزام أسود ملكي - ميناء أسود"
+      },
+      {
+        "id": "brown-leather",
+        "name": "حزام بني كلاسيك - ميناء أبيض"
+      }
+    ],
+    "description": "ساعة رجالية فاخرة تعكس الذوق الرفيع. مزودة بآلية حركة كوارتز سويسرية فائقة الدقة، زجاج هاردليكس غير قابل للخدش، وحزام مصنوع من الجلد الطبيعي 100%. مقاومة للماء والضغط اليومي.",
+    "features": [
+      "آلية حركة كوارتز فائقة الدقة وموثوقة",
+      "حزام مصنوع من الجلد الطبيعي 100% مريح جداً",
+      "مقاومة للماء حتى عمق 30 متر (3ATM)",
+      "زجاج هاردليكس مقاوم للخدش والصدمات",
+      "ضمان رسمي لمدة عامين كاملين"
+    ],
+    "reviews": [
+      {
+        "author": "عبد القادر - سطيف",
+        "comment": "الساعة شابة بزاف وثقيلة في اليد، السعر مناسب جداً مقارنة بالجودة العالية.",
+        "rating": 5,
+        "date": "منذ 3 أيام"
+      },
+      {
+        "author": "أيمن - عنابة",
+        "comment": "وصلتني للدار في عنابة بعد 48 ساعة، التوصيل والدفع عند الاستلام مريح بزاف.",
+        "rating": 5,
+        "date": "منذ 5 أيام"
+      }
+    ]
+  },
+  {
+    "id": "sac-cuir",
+    "title": "حقيبة ظهر نسائية عصرية من الجلد الفاخر المقاوم للماء",
+    "subtitle": "أنشطة يومية، عمل أو سفر - سعة واسعة وتصميم مريح وعصري",
+    "price": 4200,
+    "old_price": 6500,
+    "currency": "د.ج",
+    "rating": 4.9,
+    "reviews_count": 82,
+    "stock_remaining": 9,
+    "badge": "توصيل مجاني اليوم 🚚",
+    "images": [
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      {
+        "id": "black",
+        "name": "أسود ملكي"
+      },
+      {
+        "id": "camel",
+        "name": "بني كراميل"
+      }
+    ],
+    "description": "حقيبة جلدية راقية تناسب المرأة العصرية، تتميز بجيوب متعددة وسعة واسعة مع حماية كاملة لأغراضك اليومية.",
+    "features": [
+      "جلد اصطناعي بريميوم مقاوم للماء والخدش",
+      "جيوب متعددة مع سحاب عالي الجودة متين",
+      "حمالات كتف مريحة ومبطنة للغاية",
+      "تتسع لجهاز لوحي ومستلزمات متعددة"
+    ],
+    "reviews": [
+      {
+        "author": "نور الهدى - تلمسان",
+        "comment": "الحقيبة جات كيما في الصورة تماماً، كلاس ورفيعة بزاف!",
+        "rating": 5,
+        "date": "منذ يومين"
+      }
+    ]
+  },
+  {
+    "id": "playsation 6",
+    "title": "playsation 6",
+    "subtitle": "playsation 6",
+    "price": 250000,
+    "old_price": 250000,
+    "currency": "د.ج",
+    "rating": 4.9,
+    "reviews_count": 0,
+    "stock_remaining": 5,
+    "badge": "playsation 6",
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAd2tacnHbYa1plzM1z1KrzVQ2RvVDqfa7gC-Yde-BVg&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8c55Tig8t8na-yT1s9WWvinh6vSlTITfj-hvjHJXZjQ&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjGlJJh4ZceVJQXmSDBVZ7pvJQ9bncNxEc-9PqS3xOcg&s"
+    ],
+    "variants": [
+      {
+        "id": "playsation 6",
+        "name": "playsation 6"
+      }
+    ],
+    "description": "playsation 6",
+    "features": [
+      "playsation 6"
+    ],
+    "reviews": []
+  }
+]
