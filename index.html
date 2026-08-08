@@ -321,7 +321,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <!-- Dynamic JavaScript Logic -->
-  <script src="/main.js"></script>
+  <script src="./main.js"></script>
 
   <!-- Floating WhatsApp Interactive Widget (Menu ancré absolument au-dessus du bouton) -->
   <div id="whatsapp-widget-container" class="fixed bottom-24 right-4 z-[100] md:bottom-8 md:right-8 pointer-events-none"
@@ -442,11 +442,13 @@
           : 'https://intelligence-welfare-ceo-song.trycloudflare.com';
 
         try {
-          const res = await fetch(`${API_BASE}/api/config`);
+          const res = await fetch(`${API_BASE}/api/config`, {
+            headers: { 'bypass-tunnel-reminder': 'true' }
+          });
           if (res.ok) config = await res.json();
         } catch (e) {
           try {
-            const res = await fetch('/api/config');
+            const res = await fetch('./api/config');
             if (res.ok) config = await res.json();
           } catch (err) { }
         }

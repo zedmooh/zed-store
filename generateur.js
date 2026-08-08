@@ -783,7 +783,7 @@ const Gen = (() => {
   function loadFromServer() {
     _showToast('⏳ جارٍ تحميل produits.json...', 'warning');
 
-    fetch('/produits.json?_t=' + Date.now())  // cache-buster
+    fetch('./produits.json?_t=' + Date.now())  // cache-buster
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status} — الملف غير موجود في public/`);
         return res.json();

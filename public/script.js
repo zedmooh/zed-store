@@ -90,11 +90,13 @@ async function initApp() {
     // 1. Fetch des produits en direct depuis l'API backend Node.js (/api/products)
     let products = [];
     try {
-      const res = await fetch(`${API_BASE}/api/products`);
+      const res = await fetch(`${API_BASE}/api/products`, {
+        headers: { 'bypass-tunnel-reminder': 'true' }
+      });
       if (res.ok) products = await res.json();
     } catch (e) {
       try {
-        const res = await fetch('/api/products');
+        const res = await fetch('./api/products');
         if (res.ok) products = await res.json();
       } catch (err) { }
     }
@@ -102,7 +104,7 @@ async function initApp() {
     // Fallback fichier static si serveur non disponible
     if (!products || !products.length) {
       try {
-        const res = await fetch('/produits.json');
+        const res = await fetch('./produits.json');
         if (res.ok) products = await res.json();
       } catch (e) {
         try {
