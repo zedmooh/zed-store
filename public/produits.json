@@ -1,7 +1,7 @@
 [
   {
     "id": "collier-lune",
-    "title": "قلادة هلال القمر المطلي بالذهب عيار 18 - تصميم أنيق وفاخر",
+    "title": "قلادة هلال القمر",
     "subtitle": "لمسة أناقة ساحرة تناسب جميع المناسبات - إصدار محدود مع علبة هدايا مجانية",
     "price": 3200,
     "old_price": 4800,
@@ -13,11 +13,7 @@
     "images": [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoEfc2caVWPiK53JNKhih21jgCkLGYQmXGtziSY9iplw&s=10",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Hh4Q34QnBV6yEnk4aKv1zU3f7GeUzTWgmQQSAVVcUA&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzIvHxnMRSuQ_4AwbO6qYAkVjxA5vB1HjnYbziL0o0uA&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZceof18I32gJybykLwmFPG9Hs0gOdFI98uo2AlI5dDw&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZceof18I32gJybykLwmFPG9Hs0gOdFI98uo2AlI5dDw&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTClKdzpk5rWsdJmtxLXCLOLKeXWu6Pq_C85Qte9A6WhA&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTClKdzpk5rWsdJmtxLXCLOLKeXWu6Pq_C85Qte9A6WhA&s=10"
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786222079/products/thv7lskrprn9jcjgrdkz.jpg"
     ],
     "variants": [
       {
@@ -56,7 +52,8 @@
         "rating": 5,
         "date": "منذ أسبوع"
       }
-    ]
+    ],
+    "freeShipping": false
   },
   {
     "id": "montre-homme",
@@ -147,33 +144,5 @@
         "date": "منذ يومين"
       }
     ]
-  },
-  {
-    "id": "playsation 6",
-    "title": "playsation 6",
-    "subtitle": "playsation 6",
-    "price": 250000,
-    "old_price": 250000,
-    "currency": "د.ج",
-    "rating": 4.9,
-    "reviews_count": 0,
-    "stock_remaining": 5,
-    "badge": "playsation 6",
-    "images": [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAd2tacnHbYa1plzM1z1KrzVQ2RvVDqfa7gC-Yde-BVg&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8c55Tig8t8na-yT1s9WWvinh6vSlTITfj-hvjHJXZjQ&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjGlJJh4ZceVJQXmSDBVZ7pvJQ9bncNxEc-9PqS3xOcg&s"
-    ],
-    "variants": [
-      {
-        "id": "playsation 6",
-        "name": "playsation 6"
-      }
-    ],
-    "description": "playsation 6",
-    "features": [
-      "playsation 6"
-    ],
-    "reviews": []
   }
 ]

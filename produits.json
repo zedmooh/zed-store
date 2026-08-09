@@ -1,7 +1,7 @@
 [
   {
     "id": "collier-lune",
-    "title": "قلادة هلال القمر المطلي بالذهب عيار 18 - تصميم أنيق وفاخر",
+    "title": "قلادة هلال القمر",
     "subtitle": "لمسة أناقة ساحرة تناسب جميع المناسبات - إصدار محدود مع علبة هدايا مجانية",
     "price": 3200,
     "old_price": 4800,
@@ -11,9 +11,9 @@
     "stock_remaining": 7,
     "badge": "الأكثر مبيعاً 🔥",
     "images": [
-      "https://ae-pic-a1.aliexpress-media.com/kf/Sa5ebc3cd9166419198eba4fb90b8fb85D.jpg_960x960.jpg",
-      "https://rukmini1.flixcart.com/image/1500/1500/xif0q/shopsy-pendant-locket/x/3/m/na-na-contemporary-p-517-moon-pendant-gulandglow-original-imahkghqanznjzxz.jpeg?q=70",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZENc04rlUHQrd7AUOdDgj16xhoNqkAopoN66EW7taQ&s"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoEfc2caVWPiK53JNKhih21jgCkLGYQmXGtziSY9iplw&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Hh4Q34QnBV6yEnk4aKv1zU3f7GeUzTWgmQQSAVVcUA&s=10",
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786222079/products/thv7lskrprn9jcjgrdkz.jpg"
     ],
     "variants": [
       {
@@ -52,7 +52,8 @@
         "rating": 5,
         "date": "منذ أسبوع"
       }
-    ]
+    ],
+    "freeShipping": false
   },
   {
     "id": "montre-homme",
