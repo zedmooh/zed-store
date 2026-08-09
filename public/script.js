@@ -481,10 +481,46 @@ function updatePriceSummary() {
   const zone = wilayaObj.zone;
   const rates = SHIPPING_RATES[zone] || SHIPPING_RATES.north;
 
+  const optionsContainer = document.getElementById('delivery-options');
+  if (optionsContainer && shouldDisplayDelivery) {
+    if (isProductFreeShipping) {
+      selectedDeliveryType = 'free';
+      optionsContainer.innerHTML = `
+        <label id="opt-free" class="col-span-2 flex items-center justify-between p-3.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/80 cursor-default shadow-xs transition">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black">🚚</span>
+            <div class="flex flex-col text-right">
+              <span class="text-xs font-black text-emerald-950">توصيل مجاني 🎉</span>
+              <span class="text-[10px] text-emerald-700 font-semibold">عرض خاص: التوصيل مجاناً لجميع الولايات</span>
+            </div>
+          </div>
+          <span class="text-xs font-black bg-emerald-600 text-white px-2.5 py-1 rounded-lg shadow-xs">مجاني (0 د.ج)</span>
+        </label>
+      `;
+    } else {
+      if (selectedDeliveryType === 'free') selectedDeliveryType = 'home';
+      optionsContainer.innerHTML = `
+        <label id="opt-home" class="flex items-center justify-between p-3 rounded-xl ${selectedDeliveryType === 'home' ? 'border-2 border-brand-600 bg-brand-50/60' : 'border border-slate-300 bg-white hover:bg-slate-50'} cursor-pointer transition">
+          <div class="flex items-center gap-2">
+            <input type="radio" name="delivery_type" value="home" ${selectedDeliveryType === 'home' ? 'checked' : ''} onchange="setDeliveryType('home')" class="accent-brand-600 w-4 h-4" />
+            <span class="text-xs font-bold text-slate-900">توصيل للبيت 🏠</span>
+          </div>
+          <span id="home-fee-tag" class="text-xs font-black text-brand-700">${rates.home} د.ج</span>
+        </label>
+
+        <label id="opt-desk" class="flex items-center justify-between p-3 rounded-xl ${selectedDeliveryType === 'desk' ? 'border-2 border-brand-600 bg-brand-50/60' : 'border border-slate-300 bg-white hover:bg-slate-50'} cursor-pointer transition">
+          <div class="flex items-center gap-2">
+            <input type="radio" name="delivery_type" value="desk" ${selectedDeliveryType === 'desk' ? 'checked' : ''} onchange="setDeliveryType('desk')" class="accent-brand-600 w-4 h-4" />
+            <span class="text-xs font-bold text-slate-900">استلام من المكتب 🏢</span>
+          </div>
+          <span id="desk-fee-tag" class="text-xs font-black text-slate-600">${rates.desk} د.ج</span>
+        </label>
+      `;
+    }
+  }
+
   let shippingFee = 0;
-  if (!shouldDisplayDelivery) {
-    shippingFee = 0;
-  } else if (isProductFreeShipping) {
+  if (!shouldDisplayDelivery || isProductFreeShipping) {
     shippingFee = 0;
   } else {
     shippingFee = selectedDeliveryType === 'home' ? rates.home : rates.desk;
@@ -492,17 +528,6 @@ function updatePriceSummary() {
 
   const subtotal = currentProduct.price * selectedQuantity;
   const total = subtotal + shippingFee;
-
-  // Update delivery radio option tags
-  const homeTag = document.getElementById('home-fee-tag');
-  const deskTag = document.getElementById('desk-fee-tag');
-  if (isProductFreeShipping) {
-    if (homeTag) homeTag.textContent = 'مجاني (0 د.ج)';
-    if (deskTag) deskTag.textContent = 'مجاني (0 د.ج)';
-  } else {
-    if (homeTag) homeTag.textContent = `${rates.home} د.ج`;
-    if (deskTag) deskTag.textContent = `${rates.desk} د.ج`;
-  }
 
   // Update Breakdown Labels & Visibility
   const subtotalLabel = document.getElementById('summary-subtotal-label');
