@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Script de gestion dynamique de la Landing Page "YouCan Style" (Algérie - COD)
  * Totalement piloté par JavaScript & produits.json (Aucune donnée produit en dur)
  */
@@ -79,7 +79,7 @@ let selectedQuantity = 1;
 let selectedVariant = null;
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://intelligence-welfare-ceo-song.trycloudflare.com';
+  : 'https://themes-mpg-factors-galleries.trycloudflare.com';
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
