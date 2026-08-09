@@ -51,6 +51,12 @@ const Gen = (() => {
     wrapper.innerHTML = _buildBlockHTML(blockId, _counter, data);
     container.appendChild(wrapper);
 
+    // --- S'assurer que la case à cocher Livraison Gratuite est cochée visuellement ---
+    const freeShipCheckbox = document.getElementById(`${blockId}-free-shipping`);
+    if (freeShipCheckbox) {
+      freeShipCheckbox.checked = (data.freeShipping === true || data.freeShipping === 'true');
+    }
+
     // --- Initialiser les listes dynamiques ---
     // Variants
     const variants = (data.variants && data.variants.length > 0)
@@ -233,7 +239,7 @@ const Gen = (() => {
         </div>
         <!-- Option Livraison Gratuite par produit -->
         <div class="flex items-center gap-2.5 bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/80">
-          <input type="checkbox" id="${blockId}-free-shipping" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer" ${d.freeShipping ? 'checked' : ''} onchange="Gen.schedulePreviewRefresh()" />
+          <input type="checkbox" id="${blockId}-free-shipping" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer" ${(d.freeShipping === true || d.freeShipping === 'true') ? 'checked="checked"' : ''} onchange="Gen.schedulePreviewRefresh()" />
           <label for="${blockId}-free-shipping" class="text-xs font-bold text-emerald-950 cursor-pointer select-none flex items-center gap-1.5">
             🚚 <span data-i18n="catalog.label_free_shipping">توصيل مجاني لهذا المنتج (Free Shipping)</span>
           </label>
