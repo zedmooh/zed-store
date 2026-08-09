@@ -462,6 +462,18 @@ window.setDeliveryType = function (type) {
 function updatePriceSummary() {
   if (!currentProduct) return;
 
+  const lp = window.globalLandingPageConfig || {};
+  const isProductFreeShipping = (currentProduct.freeShipping === true);
+  const isGlobalDeliveryShown = (lp.showDelivery !== false);
+  const shouldDisplayDelivery = isProductFreeShipping || isGlobalDeliveryShown;
+
+  // Toggle delivery section visibility based on priority rules
+  const deliverySection = document.getElementById('delivery-section') ||
+                          document.getElementById('delivery-options')?.parentElement;
+  if (deliverySection) {
+    deliverySection.style.display = shouldDisplayDelivery ? '' : 'none';
+  }
+
   const wilayaSelect = document.getElementById('customer-wilaya');
   const selectedWilayaCode = wilayaSelect ? wilayaSelect.value : '16';
   const wilayaObj = WILAYAS_ALGERIE.find(w => w.code === selectedWilayaCode) || WILAYAS_ALGERIE[15];
@@ -469,25 +481,54 @@ function updatePriceSummary() {
   const zone = wilayaObj.zone;
   const rates = SHIPPING_RATES[zone] || SHIPPING_RATES.north;
 
-  const shippingFee = selectedDeliveryType === 'home' ? rates.home : rates.desk;
+  let shippingFee = 0;
+  if (!shouldDisplayDelivery) {
+    shippingFee = 0;
+  } else if (isProductFreeShipping) {
+    shippingFee = 0;
+  } else {
+    shippingFee = selectedDeliveryType === 'home' ? rates.home : rates.desk;
+  }
+
   const subtotal = currentProduct.price * selectedQuantity;
   const total = subtotal + shippingFee;
 
-  // Update delivery tags
+  // Update delivery radio option tags
   const homeTag = document.getElementById('home-fee-tag');
   const deskTag = document.getElementById('desk-fee-tag');
-  if (homeTag) homeTag.textContent = `${rates.home} د.ج`;
-  if (deskTag) deskTag.textContent = `${rates.desk} د.ج`;
+  if (isProductFreeShipping) {
+    if (homeTag) homeTag.textContent = 'مجاني (0 د.ج)';
+    if (deskTag) deskTag.textContent = 'مجاني (0 د.ج)';
+  } else {
+    if (homeTag) homeTag.textContent = `${rates.home} د.ج`;
+    if (deskTag) deskTag.textContent = `${rates.desk} د.ج`;
+  }
 
-  // Update Breakdown Labels
-  document.getElementById('summary-subtotal-label').textContent = `سعر المنتج (${selectedQuantity}x):`;
-  document.getElementById('summary-subtotal').textContent = formatPrice(subtotal, currentProduct.currency);
+  // Update Breakdown Labels & Visibility
+  const subtotalLabel = document.getElementById('summary-subtotal-label');
+  if (subtotalLabel) subtotalLabel.textContent = `سعر المنتج (${selectedQuantity}x):`;
+  const subtotalVal = document.getElementById('summary-subtotal');
+  if (subtotalVal) subtotalVal.textContent = formatPrice(subtotal, currentProduct.currency);
 
-  document.getElementById('summary-shipping-label').textContent = `مصاريف التوصيل (${wilayaObj.name}):`;
-  document.getElementById('summary-shipping').textContent = formatPrice(shippingFee, currentProduct.currency);
+  const shippingRow = document.getElementById('summary-shipping-row') ||
+                      document.getElementById('summary-shipping')?.parentElement;
+  const shippingLabel = document.getElementById('summary-shipping-label');
+  const shippingVal = document.getElementById('summary-shipping');
 
-  document.getElementById('summary-total-label').textContent = 'المبلغ الإجمالي عند الاستلام:';
-  document.getElementById('summary-total').textContent = formatPrice(total, currentProduct.currency);
+  if (!shouldDisplayDelivery) {
+    if (shippingRow) shippingRow.style.display = 'none';
+  } else {
+    if (shippingRow) shippingRow.style.display = 'flex';
+    if (shippingLabel) shippingLabel.textContent = `مصاريف التوصيل (${wilayaObj.name}):`;
+    if (shippingVal) {
+      shippingVal.textContent = isProductFreeShipping ? 'مجاني (0 د.ج)' : formatPrice(shippingFee, currentProduct.currency);
+    }
+  }
+
+  const totalLabel = document.getElementById('summary-total-label');
+  if (totalLabel) totalLabel.textContent = 'المبلغ الإجمالي عند الاستلام:';
+  const totalVal = document.getElementById('summary-total');
+  if (totalVal) totalVal.textContent = formatPrice(total, currentProduct.currency);
 
   // Update Sticky Bottom Bar Price
   const stickyPrice = document.getElementById('sticky-price');
@@ -549,7 +590,19 @@ function handleOrderSubmit(e) {
 
   const wilayaObj = WILAYAS_ALGERIE.find(w => w.code === wilayaCode) || WILAYAS_ALGERIE[15];
   const rates = SHIPPING_RATES[wilayaObj.zone] || SHIPPING_RATES.north;
-  const shippingFee = selectedDeliveryType === 'home' ? rates.home : rates.desk;
+
+  const lp = window.globalLandingPageConfig || {};
+  const isProductFreeShipping = (currentProduct && currentProduct.freeShipping === true);
+  const isGlobalDeliveryShown = (lp.showDelivery !== false);
+  const shouldDisplayDelivery = isProductFreeShipping || isGlobalDeliveryShown;
+
+  let shippingFee = 0;
+  if (!shouldDisplayDelivery || isProductFreeShipping) {
+    shippingFee = 0;
+  } else {
+    shippingFee = selectedDeliveryType === 'home' ? rates.home : rates.desk;
+  }
+
   const subtotal = currentProduct.price * selectedQuantity;
   const totalAmount = subtotal + shippingFee;
 

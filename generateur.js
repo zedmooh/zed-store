@@ -226,10 +226,17 @@ const Gen = (() => {
               value="${d.stock_remaining}" min="0" step="1" placeholder="5" />
           </div>
           <div>
-            <label class="gen-label" for="${blockId}-currency">💱 العملة</label>
-            <input type="text" id="${blockId}-currency" class="gen-input text-sm"
+            <label class="gen-label" for="${blockId}-currency">💱 <span data-i18n="catalog.label_currency">العملة</span></label>
+            <input type="text" id="${blockId}-currency" class="gen-input border-2 border-dashed border-green-500 rounded-md p-2 w-full bg-transparent focus:outline-none focus:border-green-700 text-sm"
               value="${d.currency}" placeholder="د.ج" />
           </div>
+        </div>
+        <!-- Option Livraison Gratuite par produit -->
+        <div class="flex items-center gap-2.5 bg-emerald-50/80 p-3 rounded-xl border border-emerald-200/80">
+          <input type="checkbox" id="${blockId}-free-shipping" class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer" ${d.freeShipping ? 'checked' : ''} onchange="Gen.schedulePreviewRefresh()" />
+          <label for="${blockId}-free-shipping" class="text-xs font-bold text-emerald-950 cursor-pointer select-none flex items-center gap-1.5">
+            🚚 <span data-i18n="catalog.label_free_shipping">توصيل مجاني لهذا المنتج (Free Shipping)</span>
+          </label>
         </div>
       </div>
 
@@ -561,7 +568,8 @@ const Gen = (() => {
       reviews_count  : Math.round(num('reviews-count', 0)),
       stock_remaining: Math.round(num('stock', 5)),
       badge          : val('badge'),
-      images         : images.length > 0 ? images : [],
+      freeShipping   : chk('free-shipping'),
+      images         : images.length > 0 ? images : [''],
       variants       : variants,
       description    : val('description'),
       features       : features,
