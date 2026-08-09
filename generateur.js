@@ -522,6 +522,10 @@ const Gen = (() => {
       const v = parseFloat(val(suffix));
       return isNaN(v) ? fallback : v;
     };
+    const chk = (suffix) => {
+      const el = document.getElementById(`${blockId}-${suffix}`);
+      return el ? el.checked === true : false;
+    };
 
     // --- Images ---
     const images = [0, 1, 2]
