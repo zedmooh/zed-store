@@ -1,107 +1,29 @@
 [
   {
     "id": "collier-lune",
-    "title": "telep",
-    "subtitle": "لمسة أناقة ساحرة تناسب جميع المناسبات - إصدار محدود مع علبة هدايا مجانية",
-    "price": 3200,
-    "old_price": 4800,
+    "title": "قلادة نسائية من التيتانيوم الصلب بلون ذهبي",
+    "subtitle": "تصميم نجمة، قلادة على شكل كوكب وقمر، مجوهرات فاخرة خفيفة،",
+    "price": 800,
+    "old_price": 1100,
     "currency": "د.ج",
     "rating": 4.9,
     "reviews_count": 128,
     "stock_remaining": 7,
     "badge": "الأكثر مبيعاً 🔥",
     "images": [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoEfc2caVWPiK53JNKhih21jgCkLGYQmXGtziSY9iplw&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Hh4Q34QnBV6yEnk4aKv1zU3f7GeUzTWgmQQSAVVcUA&s=10",
-      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786222079/products/thv7lskrprn9jcjgrdkz.jpg"
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786315561/products/t8iocidx7s2faeuni2hl.png",
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786315575/products/b69lm20so2sawiymqtcb.png",
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786315584/products/yx32sdv8pwigz7jabmdy.png",
+      "https://res.cloudinary.com/cnzk4ax4/image/upload/v1786315741/products/x792w2jjpmqmfjwd9pne.png"
     ],
-    "variants": [
-      {
-        "id": "gold-18k",
-        "name": "ذهب عيار 18 (Gold 18K)"
-      },
-      {
-        "id": "silver-925",
-        "name": "فضة ناصعة (Silver 925)"
-      }
-    ],
-    "description": "قلادة مميزة بتصميم هلال القمر الأنيق، مصنوعة بمهارة عالية ومطلية بماء الذهب عيار 18 المقاوم للتغير والماء. تأتي في علبة هدايا فاخرة مجانية، وهي خيار مثالي للتقديم كهدية راقية أو لإضافة لمسة من الرقي والفخامة لإطلالتك اليومية.",
+    "variants": [],
+    "description": "قلادة مميزة بتصميم هلال القمر الأنيق، مصنوعة بمهارة عالية  المقاوم للتغير والماء. ، وهي خيار مثالي للتقديم كهدية راقية أو لإضافة لمسة من الرقي والفخامة لإطلالتك اليومية.",
     "features": [
-      "طلاء ذهب بريميوم عيار 18 مقاوم للتغير والماء",
       "سلسلة رفيعة أنيقة قابلة للتعديل حسب الطول المرغوب",
-      "تأتي مع علبة هدايا مخملية فاخرة مجاناً مع كل طلب",
       "ضمان جودة حقيقي لمدة سنة كاملة من تاريخ الشراء",
       "توصيل سريع وآمن لجميع 58 ولاية مع خيار الفحص عند الاستلام"
     ],
-    "reviews": [
-      {
-        "author": "أمينة - الجزائر العاصمة",
-        "comment": "ما شاء الله القلادة روعة بزاف والشين جات هايلة، وصلتي في يومين شكراً لكم!",
-        "rating": 5,
-        "date": "منذ يومين"
-      },
-      {
-        "author": "مريم - وهران",
-        "comment": "الجودة ممتازة والعلبة الفاخرة عجبتني بزاف، ربي يوفقكم خاوتي.",
-        "rating": 5,
-        "date": "منذ 4 أيام"
-      },
-      {
-        "author": "ياسمين - قسنطينة",
-        "comment": "توصيل سريع والتغليف راقي جداً، ننصحكم بيهم بدون تردد!",
-        "rating": 5,
-        "date": "منذ أسبوع"
-      }
-    ],
+    "reviews": [],
     "freeShipping": false
-  },
-  {
-    "id": "montre-homme",
-    "title": "ساعة رجالية كلاسيكية فاخرة مضادة للماء - حزام جلدي أصلي",
-    "subtitle": "تصميم سويسري عالي الدقة لإطلالة رجالية جذابة ومميزة لكل الأوقات",
-    "price": 5500,
-    "old_price": 8200,
-    "currency": "د.ج",
-    "rating": 4.8,
-    "reviews_count": 94,
-    "stock_remaining": 4,
-    "badge": "عرض خاص - خصم 33% ⏳",
-    "images": [
-      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
-    ],
-    "variants": [
-      {
-        "id": "black-leather",
-        "name": "حزام أسود ملكي - ميناء أسود"
-      },
-      {
-        "id": "brown-leather",
-        "name": "حزام بني كلاسيك - ميناء أبيض"
-      }
-    ],
-    "description": "ساعة رجالية فاخرة تعكس الذوق الرفيع. مزودة بآلية حركة كوارتز سويسرية فائقة الدقة، زجاج هاردليكس غير قابل للخدش، وحزام مصنوع من الجلد الطبيعي 100%. مقاومة للماء والضغط اليومي.",
-    "features": [
-      "آلية حركة كوارتز فائقة الدقة وموثوقة",
-      "حزام مصنوع من الجلد الطبيعي 100% مريح جداً",
-      "مقاومة للماء حتى عمق 30 متر (3ATM)",
-      "زجاج هاردليكس مقاوم للخدش والصدمات",
-      "ضمان رسمي لمدة عامين كاملين"
-    ],
-    "reviews": [
-      {
-        "author": "عبد القادر - سطيف",
-        "comment": "الساعة شابة بزاف وثقيلة في اليد، السعر مناسب جداً مقارنة بالجودة العالية.",
-        "rating": 5,
-        "date": "منذ 3 أيام"
-      },
-      {
-        "author": "أيمن - عنابة",
-        "comment": "وصلتني للدار في عنابة بعد 48 ساعة، التوصيل والدفع عند الاستلام مريح بزاف.",
-        "rating": 5,
-        "date": "منذ 5 أيام"
-      }
-    ]
   }
 ]
