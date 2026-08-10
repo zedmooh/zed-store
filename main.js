@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Script de gestion dynamique de la Landing Page "YouCan Style" (Algérie - COD)
  * Totalement piloté par JavaScript & produits.json (Aucune donnée produit en dur)
  */
@@ -1092,6 +1092,30 @@ async function applyLandingPageConfig() {
       } else {
         reviewsSection.style.setProperty('display', 'none', 'important');
       }
+    }
+
+    // 6. Section & Frais de livraison (Global Delivery Toggle)
+    const isDeliveryActive = (lp.showDelivery !== false && lp.delivery !== false);
+    const deliverySection = document.getElementById('delivery-section') || document.getElementById('delivery-options')?.parentElement;
+    const shippingRow = document.getElementById('summary-shipping-row') || document.getElementById('summary-shipping')?.parentElement;
+
+    if (deliverySection) {
+      if (isDeliveryActive) {
+        deliverySection.style.display = '';
+      } else {
+        deliverySection.style.setProperty('display', 'none', 'important');
+      }
+    }
+    if (shippingRow) {
+      if (isDeliveryActive) {
+        shippingRow.style.display = '';
+      } else {
+        shippingRow.style.setProperty('display', 'none', 'important');
+      }
+    }
+
+    if (typeof updatePriceSummary === 'function') {
+      updatePriceSummary();
     }
   } catch (error) {
     console.warn('[Config LP] Échec du chargement de la configuration dynamique:', error);

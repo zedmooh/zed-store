@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -511,12 +511,38 @@
           }
         }
 
+        // 6. Section & Frais de livraison (Global Delivery Toggle)
+        window.globalLandingPageConfig = lp;
+        const isDeliveryActive = (lp.showDelivery !== false && lp.delivery !== false);
+        const deliverySection = document.getElementById('delivery-section') || document.getElementById('delivery-options')?.parentElement;
+        const shippingRow = document.getElementById('summary-shipping-row') || document.getElementById('summary-shipping')?.parentElement;
+
+        if (deliverySection) {
+          if (isDeliveryActive) {
+            deliverySection.style.display = '';
+          } else {
+            deliverySection.style.setProperty('display', 'none', 'important');
+          }
+        }
+        if (shippingRow) {
+          if (isDeliveryActive) {
+            shippingRow.style.display = '';
+          } else {
+            shippingRow.style.setProperty('display', 'none', 'important');
+          }
+        }
+
+        if (typeof updatePriceSummary === 'function') {
+          updatePriceSummary();
+        }
+
         console.log('⚡ Configuration ERP appliquée en temps réel:', {
           isWhatsappActive,
           isTimerActive,
           isStrikethroughActive,
           isStockAlertActive,
-          isReviewsActive
+          isReviewsActive,
+          isDeliveryActive
         });
       } catch (err) {
           console.warn('⚠️ Échec de synchronisation de la configuration ERP:', err);
