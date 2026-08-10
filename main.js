@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Script de gestion dynamique de la Landing Page "YouCan Style" (Algérie - COD)
  * Totalement piloté par JavaScript & produits.json (Aucune donnée produit en dur)
  */
@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://trackbacks-muslim-versus-surrounded.trycloudflare.com';
+  : 'https://paint-buck-jackson-thumbzilla.trycloudflare.com';
 
 let db = null;
 if (Object.keys(firebaseConfig).length > 0 && firebaseConfig.apiKey) {
