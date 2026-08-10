@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://entities-unity-aus-norfolk.trycloudflare.com';
+  : 'https://convenient-robertson-skirt-property.trycloudflare.com';
 
 let db = null;
 if (Object.keys(firebaseConfig).length > 0 && firebaseConfig.apiKey) {
