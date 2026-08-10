@@ -79,7 +79,7 @@ let selectedQuantity = 1;
 let selectedVariant = null;
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://shirt-suit-fully-upgrades.trycloudflare.com';
+  : 'https://entities-unity-aus-norfolk.trycloudflare.com';
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
