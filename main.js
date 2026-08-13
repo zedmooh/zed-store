@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Script de gestion dynamique de la Landing Page "YouCan Style" (Algérie - COD)
  * Totalement piloté par JavaScript & produits.json (Aucune donnée produit en dur)
  */
@@ -854,24 +854,25 @@ function handleOrderSubmit(e) {
   };
   const numeroCommande = generateOrderCode();
 
-  // 1. Préparer le document pour Firestore
-  const newOrder = {
-    nom: name,
-    telephone: cleanPhone,
+  // 1. Préparer le document de commande (Conformité Souveraineté Loi 18-07)
+  const orderPayload = {
+    id: numeroCommande,
+    orderId: numeroCommande,
+    customerName: name,
+    phone: cleanPhone,
     wilaya: wilayaObj.name,
-    adresse: address,
-    produitId: currentProduct.id,
-    produitNom: currentProduct.title,
-    variante: selectedVariant ? selectedVariant.name : "",
-    quantite: selectedQuantity,
-    typeLivraison: selectedDeliveryType,
-    fraisLivraison: shippingFee,
-    prixUnitaire: currentProduct.price,
-    total: totalAmount,
-    montantTotal: totalAmount,
-    status: 'pending', // par défaut
-    date: db ? firebase.firestore.FieldValue.serverTimestamp() : new Date().toISOString(),
-    numeroCommande: numeroCommande
+    commune: address,
+    address: address,
+    productTitle: currentProduct.title,
+    productId: currentProduct.id,
+    quantity: selectedQuantity,
+    variant: selectedVariant ? selectedVariant.name : "",
+    price: currentProduct.price,
+    deliveryFee: shippingFee,
+    deliveryType: selectedDeliveryType,
+    totalPrice: totalAmount,
+    status: 'pending',
+    date: new Date().toISOString()
   };
 
   // 2. Bouton en état de chargement
@@ -880,31 +881,56 @@ function handleOrderSubmit(e) {
   btn.innerHTML = 'جاري الإرسال... <svg class="animate-spin w-5 h-5 ml-2 inline" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
   btn.disabled = true;
 
-  // 3. Envoi à Firebase
-  if (db) {
-    db.collection('commandes').add(newOrder)
-      .then((docRef) => {
-        trackPurchase(currentProduct, selectedQuantity, totalAmount);
-        showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
-      })
-      .catch((error) => {
-        console.error("Erreur d'ajout Firebase:", error);
-        alert("حدث خطأ، يرجى المحاولة مرة أخرى.");
-      })
-      .finally(() => {
-        btn.innerHTML = originalBtnHtml;
-        btn.disabled = false;
-      });
-  } else {
-    // Simulation pour test si Firebase n'est pas configuré
-    console.warn("Firebase non configuré, commande simulée:", newOrder);
-    setTimeout(() => {
+  // 3. Envoi direct vers l'API ERP Locale via Tunnel Cloudflare (Loi 18-07)
+  const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:4000'
+    : (window.ERP_API_BASE || 'https://cloudy-carrying-dist-petroleum.trycloudflare.com');
+
+  fetch(`${API_BASE}/api/orders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'bypass-tunnel-reminder': 'true'
+    },
+    body: JSON.stringify(orderPayload)
+  })
+  .then(res => {
+    if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+    return res.json();
+  })
+  .then(data => {
+    if (data && data.success) {
+      console.log('✅ Commande enregistrée avec succès sur ERP local:', data);
       trackPurchase(currentProduct, selectedQuantity, totalAmount);
       showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
-      btn.innerHTML = originalBtnHtml;
-      btn.disabled = false;
-    }, 1000);
-  }
+    } else {
+      throw new Error(data?.error || 'Échec d\'enregistrement ERP');
+    }
+  })
+  .catch(err => {
+    console.warn('⚠️ Échec de connexion ERP local direct, tentative de secours Firebase:', err);
+    
+    // Secours Firebase si ERP local est hors-ligne
+    if (typeof db !== 'undefined' && db) {
+      db.collection('commandes').add(orderPayload)
+        .then(() => {
+          trackPurchase(currentProduct, selectedQuantity, totalAmount);
+          showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
+        })
+        .catch(fbErr => {
+          console.error("❌ Erreur secours Firebase:", fbErr);
+          alert("حدث خطأ في الاتصال، يرجى إعادة المحاولة أو الاتصال مباشرة بالهاتف.");
+        });
+    } else {
+      // Validation même si réseau momentanément interrompu
+      trackPurchase(currentProduct, selectedQuantity, totalAmount);
+      showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
+    }
+  })
+  .finally(() => {
+    btn.innerHTML = originalBtnHtml;
+    btn.disabled = false;
+  });
 }
 
 function showSuccessModal(name, phone, orderCode, totalAmount, wilayaName, address) {
