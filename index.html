@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -548,6 +548,17 @@
 
         if (typeof updatePriceSummary === 'function') {
           updatePriceSummary();
+        }
+
+        // 7. Personnalisation Visuelle & Infos Enseigne
+        if (config.visuals && config.visuals.topAnnouncement) {
+          const annElem = document.getElementById('top-announcement');
+          if (annElem) annElem.textContent = config.visuals.topAnnouncement;
+        }
+
+        if (config.storeInfo && config.storeInfo.name) {
+          const brandTextElem = document.querySelector('header span.font-black') || document.querySelector('header span');
+          if (brandTextElem) brandTextElem.textContent = config.storeInfo.name;
         }
 
         console.log('⚡ Configuration ERP appliquée en temps réel:', {
