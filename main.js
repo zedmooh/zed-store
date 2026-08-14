@@ -17,12 +17,6 @@ const firebaseConfig = {
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
   : 'https://cloudy-carrying-dist-petroleum.trycloudflare.com';
-
-let db = null;
-if (Object.keys(firebaseConfig).length > 0 && firebaseConfig.apiKey) {
-  firebase.initializeApp(firebaseConfig);
-  db = firebase.firestore();
-}
 // =================================================
 
 function escapeHtml(str) {
@@ -35,31 +29,60 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-// ====== FONCTIONS DE TRACKING (Pixels) ======
+// ====== FONCTIONS DE TRACKING MULTI-CANAL (Client Pixels & CAPI) ======
 function trackViewContent(product) {
-  if (typeof fbq === 'function') {
-    fbq('track', 'ViewContent', { content_name: product.title, value: product.price, currency: product.currency || 'DZD' });
+  if (window.ZedTracker) {
+    window.ZedTracker.track('ViewContent', {
+      productTitle: product.title,
+      price: product.price,
+      currency: product.currency || 'DZD',
+      productId: product.id
+    });
+  } else {
+    if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: product.title, value: product.price, currency: product.currency || 'DZD' });
+    if (typeof ttq === 'function') ttq.track('ViewContent', { contents: [{ content_name: product.title, price: product.price }], value: product.price, currency: product.currency || 'DZD' });
   }
-  if (typeof ttq === 'function') {
-    ttq.track('ViewContent', { contents: [{ content_name: product.title, price: product.price }], value: product.price, currency: product.currency || 'DZD' });
+}
+
+function trackAddToCart(product, quantity) {
+  if (window.ZedTracker) {
+    window.ZedTracker.track('AddToCart', {
+      productTitle: product.title,
+      price: product.price,
+      quantity: quantity || 1,
+      currency: product.currency || 'DZD',
+      productId: product.id
+    });
   }
 }
 
 function trackInitiateCheckout(product) {
-  if (typeof fbq === 'function') {
-    fbq('track', 'InitiateCheckout', { content_name: product.title, value: product.price, currency: product.currency || 'DZD' });
-  }
-  if (typeof ttq === 'function') {
-    ttq.track('InitiateCheckout', { contents: [{ content_name: product.title, price: product.price }], value: product.price, currency: product.currency || 'DZD' });
+  if (window.ZedTracker) {
+    window.ZedTracker.track('InitiateCheckout', {
+      productTitle: product.title,
+      price: product.price,
+      currency: product.currency || 'DZD',
+      productId: product.id
+    });
+  } else {
+    if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { content_name: product.title, value: product.price, currency: product.currency || 'DZD' });
+    if (typeof ttq === 'function') ttq.track('InitiateCheckout', { contents: [{ content_name: product.title, price: product.price }], value: product.price, currency: product.currency || 'DZD' });
   }
 }
 
-function trackPurchase(product, quantity, totalValue) {
-  if (typeof fbq === 'function') {
-    fbq('track', 'Purchase', { content_name: product.title, value: totalValue, currency: product.currency || 'DZD' });
-  }
-  if (typeof ttq === 'function') {
-    ttq.track('CompletePayment', { contents: [{ content_name: product.title, price: product.price, quantity: quantity }], value: totalValue, currency: product.currency || 'DZD' });
+function trackPurchase(product, quantity, totalValue, eventId) {
+  if (window.ZedTracker) {
+    window.ZedTracker.track('Purchase', {
+      productTitle: product.title,
+      price: product.price,
+      quantity: quantity,
+      value: totalValue,
+      currency: product.currency || 'DZD',
+      productId: product.id
+    }, eventId);
+  } else {
+    if (typeof fbq === 'function') fbq('track', 'Purchase', { content_name: product.title, value: totalValue, currency: product.currency || 'DZD' }, eventId ? { eventID: eventId } : undefined);
+    if (typeof ttq === 'function') ttq.track('CompletePayment', { contents: [{ content_name: product.title, price: product.price, quantity: quantity }], value: totalValue, currency: product.currency || 'DZD' }, eventId ? { event_id: eventId } : undefined);
   }
 }
 // ===========================================
@@ -854,10 +877,12 @@ function handleOrderSubmit(e) {
   };
   const numeroCommande = generateOrderCode();
 
-  // 1. Préparer le document de commande (Conformité Souveraineté Loi 18-07)
+  // 1. Préparer le document de commande avec eventId partagé pour déduplication CAPI
+  const orderEventId = `ord_${numeroCommande}`;
   const orderPayload = {
     id: numeroCommande,
     orderId: numeroCommande,
+    eventId: orderEventId,
     customerName: name,
     phone: cleanPhone,
     wilaya: wilayaObj.name,
@@ -901,31 +926,15 @@ function handleOrderSubmit(e) {
   .then(data => {
     if (data && data.success) {
       console.log('✅ Commande enregistrée avec succès sur ERP local:', data);
-      trackPurchase(currentProduct, selectedQuantity, totalAmount);
+      trackPurchase(currentProduct, selectedQuantity, totalAmount, orderEventId);
       showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
     } else {
       throw new Error(data?.error || 'Échec d\'enregistrement ERP');
     }
   })
   .catch(err => {
-    console.warn('⚠️ Échec de connexion ERP local direct, tentative de secours Firebase:', err);
-    
-    // Secours Firebase si ERP local est hors-ligne
-    if (typeof db !== 'undefined' && db) {
-      db.collection('commandes').add(orderPayload)
-        .then(() => {
-          trackPurchase(currentProduct, selectedQuantity, totalAmount);
-          showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
-        })
-        .catch(fbErr => {
-          console.error("❌ Erreur secours Firebase:", fbErr);
-          alert("حدث خطأ في الاتصال، يرجى إعادة المحاولة أو الاتصال مباشرة بالهاتف.");
-        });
-    } else {
-      // Validation même si réseau momentanément interrompu
-      trackPurchase(currentProduct, selectedQuantity, totalAmount);
-      showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
-    }
+    console.error('❌ Erreur lors de l\'envoi de la commande à l\'API souveraine:', err);
+    alert('حدث خطأ في الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت وإعادة المحاولة.');
   })
   .finally(() => {
     btn.innerHTML = originalBtnHtml;
