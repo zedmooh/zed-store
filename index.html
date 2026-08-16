@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -333,6 +333,12 @@
   <!-- Dynamic Multi-Pixel Tracking Client (CAPI / Client Pixels) -->
   <script src="./trackingClient.js"></script>
 
+  <!-- End-to-End Asymmetric Encryption Client (Loi 18-07 / Relay Buffer) -->
+  <script src="./secureOrderClient.js"></script>
+
+  <!-- Modular Add-ons Active Client Bundle (Conversion & Urgence) -->
+  <script src="http://localhost:4000/api/addons/bundle.js" defer></script>
+
   <!-- Dynamic JavaScript Logic -->
   <script src="./main.js"></script>
 
@@ -452,7 +458,7 @@
         let config = null;
         const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
           ? 'http://localhost:4000'
-          : 'https://cloudy-carrying-dist-petroleum.trycloudflare.com';
+          : 'https://transition-going-left-articles.trycloudflare.com';
 
         try {
           const res = await fetch(`${API_BASE}/api/config`, {

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Script de gestion dynamique de la Landing Page "YouCan Style" (Algérie - COD)
  * Totalement piloté par JavaScript & produits.json (Aucune donnée produit en dur)
  */
@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://cloudy-carrying-dist-petroleum.trycloudflare.com';
+  : 'https://transition-going-left-articles.trycloudflare.com';
 // =================================================
 
 function escapeHtml(str) {
@@ -906,40 +906,43 @@ function handleOrderSubmit(e) {
   btn.innerHTML = 'جاري الإرسال... <svg class="animate-spin w-5 h-5 ml-2 inline" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
   btn.disabled = true;
 
-  // 3. Envoi direct vers l'API ERP Locale via Tunnel Cloudflare (Loi 18-07)
+  // 3. Soumission résiliente chiffrée de bout en bout (Loi 18-07) + Tunnel Direct
   const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:4000'
-    : (window.ERP_API_BASE || 'https://cloudy-carrying-dist-petroleum.trycloudflare.com');
+    : (window.ERP_API_BASE || 'http://localhost:4000');
 
-  fetch(`${API_BASE}/api/orders`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'bypass-tunnel-reminder': 'true'
-    },
-    body: JSON.stringify(orderPayload)
-  })
-  .then(res => {
-    if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
-    return res.json();
-  })
-  .then(data => {
-    if (data && data.success) {
-      console.log('✅ Commande enregistrée avec succès sur ERP local:', data);
-      trackPurchase(currentProduct, selectedQuantity, totalAmount, orderEventId);
-      showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
-    } else {
-      throw new Error(data?.error || 'Échec d\'enregistrement ERP');
-    }
-  })
-  .catch(err => {
-    console.error('❌ Erreur lors de l\'envoi de la commande à l\'API souveraine:', err);
-    alert('حدث خطأ في الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت وإعادة المحاولة.');
-  })
-  .finally(() => {
-    btn.innerHTML = originalBtnHtml;
-    btn.disabled = false;
-  });
+  const submitAction = (window.SecureOrderClient && typeof window.SecureOrderClient.submitSecureOrder === 'function')
+    ? window.SecureOrderClient.submitSecureOrder(orderPayload)
+    : fetch(`${API_BASE}/api/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'bypass-tunnel-reminder': 'true'
+        },
+        body: JSON.stringify(orderPayload)
+      }).then(res => {
+        if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+        return res.json();
+      });
+
+  submitAction
+    .then(data => {
+      if (data && (data.success || data.orderId)) {
+        console.log('✅ Commande enregistrée avec succès:', data);
+        trackPurchase(currentProduct, selectedQuantity, totalAmount, orderEventId);
+        showSuccessModal(name, phone, numeroCommande, totalAmount, wilayaObj.name, address);
+      } else {
+        throw new Error(data?.error || 'Échec de transmission');
+      }
+    })
+    .catch(err => {
+      console.error('❌ Erreur lors de l\'envoi de la commande:', err);
+      alert('حدث خطأ في الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت وإعادة المحاولة.');
+    })
+    .finally(() => {
+      btn.innerHTML = originalBtnHtml;
+      btn.disabled = false;
+    });
 }
 
 function showSuccessModal(name, phone, orderCode, totalAmount, wilayaName, address) {
