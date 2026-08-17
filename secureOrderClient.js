@@ -141,6 +141,18 @@
      * @returns {Promise<object>} - Résultat de confirmation
      */
     async function submitSecureOrder(orderPayload) {
+        // Injection automatique de la source / campagne UTM
+        if (!orderPayload.source) {
+            if (typeof window.getZedOrderSource === 'function') {
+                orderPayload.source = window.getZedOrderSource();
+            } else if (typeof sessionStorage !== 'undefined') {
+                try {
+                    const saved = sessionStorage.getItem('zed_utm_source');
+                    if (saved) orderPayload.source = JSON.parse(saved);
+                } catch (e) {}
+            }
+        }
+
         const orderRef = orderPayload.id || orderPayload.orderId;
         const eventId = orderPayload.eventId || `ord_${orderRef}`;
 
