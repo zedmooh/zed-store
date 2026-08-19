@@ -1,5 +1,37 @@
 [
   {
+    "id": "PROD-0003",
+    "title": "t shert",
+    "subtitle": "",
+    "price": 3200,
+    "old_price": 4800,
+    "currency": "د.ج",
+    "rating": 4.9,
+    "reviews_count": 12,
+    "stock_remaining": 10,
+    "badge": "الأكثر مبيعاً 🔥",
+    "freeShipping": false,
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+    ],
+    "variants": [
+      {
+        "id": "v1",
+        "name": "أحمر / Rouge"
+      },
+      {
+        "id": "v2",
+        "name": "أسود / Noir"
+      }
+    ],
+    "description": "أكتب وصفاً تفصيلياً للمنتج هنا...",
+    "features": [
+      "جودة ممتازة وضمان سنتين من تاريخ الشراء",
+      "توصيل سريع لجميع 58 ولاية مع الفحص عند الاستلام"
+    ],
+    "reviews": []
+  },
+  {
     "id": "PROD-0002",
     "title": "caussur de sport",
     "subtitle": "ererer",
