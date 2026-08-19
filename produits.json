@@ -17,28 +17,36 @@
     ],
     "variants": [
       {
-        "id": "gris-anthracite",
-        "name": "Gris Anthracite"
+        "id": "noir",
+        "name": "Noir"
       },
       {
-        "id": "rouge",
-        "name": "Rouge"
+        "id": "blanc",
+        "name": "Blanc"
       },
       {
         "id": "bleu-marine",
         "name": "Bleu Marine"
       },
       {
+        "id": "rouge",
+        "name": "Rouge"
+      },
+      {
         "id": "vert-meraude",
         "name": "Vert Émeraude"
       },
       {
-        "id": "standard",
-        "name": "Standard / Unique"
+        "id": "gris-anthracite",
+        "name": "Gris Anthracite"
       },
       {
-        "id": "128-gb",
-        "name": "128 GB"
+        "id": "beige-camel",
+        "name": "Beige / Camel"
+      },
+      {
+        "id": "rose-poudr",
+        "name": "Rose Poudré"
       }
     ],
     "description": "أكتب وصفاً تفصيلياً للمنتج هنا...",
@@ -48,8 +56,8 @@
       "de l apart de samy abd eldjalil"
     ],
     "reviews": [],
-    "category": "إلكترونيات (Électronique & High-Tech)",
-    "subcategory": "ساعات ذكية (Smartwatches)",
+    "category": "",
+    "subcategory": "",
     "status": "active"
   },
   {
