@@ -1,35 +1,56 @@
 [
   {
     "id": "PROD-0003",
-    "title": "t shert",
-    "subtitle": "",
-    "price": 3200,
+    "title": "smart watch samy",
+    "subtitle": "إضافة وتعديل المنتجات",
+    "price": 25000,
     "old_price": 4800,
     "currency": "د.ج",
     "rating": 4.9,
     "reviews_count": 12,
     "stock_remaining": 10,
-    "badge": "الأكثر مبيعاً 🔥",
+    "badge": "✨ جودة بريميوم",
     "freeShipping": false,
     "images": [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+      "http://localhost:4000/uploads/1787170986988-ChatGPT_Image_29_juil._2026__15_30_48.png"
     ],
     "variants": [
       {
-        "id": "v1",
-        "name": "أحمر / Rouge"
+        "id": "gris-anthracite",
+        "name": "Gris Anthracite"
       },
       {
-        "id": "v2",
-        "name": "أسود / Noir"
+        "id": "rouge",
+        "name": "Rouge"
+      },
+      {
+        "id": "bleu-marine",
+        "name": "Bleu Marine"
+      },
+      {
+        "id": "vert-meraude",
+        "name": "Vert Émeraude"
+      },
+      {
+        "id": "standard",
+        "name": "Standard / Unique"
+      },
+      {
+        "id": "128-gb",
+        "name": "128 GB"
       }
     ],
     "description": "أكتب وصفاً تفصيلياً للمنتج هنا...",
     "features": [
       "جودة ممتازة وضمان سنتين من تاريخ الشراء",
-      "توصيل سريع لجميع 58 ولاية مع الفحص عند الاستلام"
+      "توصيل سريع لجميع 58 ولاية مع الفحص عند الاستلام",
+      "de l apart de samy abd eldjalil"
     ],
-    "reviews": []
+    "reviews": [],
+    "category": "إلكترونيات (Électronique & High-Tech)",
+    "subcategory": "ساعات ذكية (Smartwatches)",
+    "status": "active"
   },
   {
     "id": "PROD-0002",
