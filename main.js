@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
   ? 'http://localhost:4000'
-  : 'https://answers-implemented-modified-lawyer.trycloudflare.com';
+  : 'https://updated-emphasis-retrieval-friend.trycloudflare.com';
 // =================================================
 
 function escapeHtml(str) {
