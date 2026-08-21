@@ -1,5 +1,72 @@
 [
   {
+    "id": "PROD-0004",
+    "title": "t shirt",
+    "subtitle": "t shirt",
+    "price": 5000,
+    "old_price": 4800,
+    "currency": "د.ج",
+    "rating": 4.9,
+    "reviews_count": 12,
+    "stock_remaining": 10,
+    "badge": "🔥 BEST SELLER",
+    "category": "أزياء وملابس (Mode & Habillement)",
+    "subcategory": "ملابس رجالية (Hommes)",
+    "status": "active",
+    "freeShipping": false,
+    "images": [
+      "http://localhost:4000/uploads/1787352743426-logo_zed_store_.png"
+    ],
+    "variants": [
+      {
+        "id": "bleu-marine",
+        "name": "Bleu Marine"
+      },
+      {
+        "id": "noir",
+        "name": "Noir"
+      },
+      {
+        "id": "doree",
+        "name": "DOREE"
+      },
+      {
+        "id": "vert-meraude",
+        "name": "Vert Émeraude"
+      },
+      {
+        "id": "xs",
+        "name": "XS"
+      },
+      {
+        "id": "s",
+        "name": "S"
+      },
+      {
+        "id": "m",
+        "name": "M"
+      },
+      {
+        "id": "l",
+        "name": "L"
+      },
+      {
+        "id": "xl",
+        "name": "XL"
+      },
+      {
+        "id": "xxl",
+        "name": "XXL"
+      }
+    ],
+    "description": "أكتب وصفاً تفصيلياً للمنتج هنا...",
+    "features": [
+      "جودة ممتازة وضمان سنتين من تاريخ الشراء",
+      "توصيل سريع لجميع 58 ولاية مع الفحص عند الاستلام"
+    ],
+    "reviews": []
+  },
+  {
     "id": "PROD-0003",
     "title": "smart watch samy",
     "subtitle": "إضافة وتعديل المنتجات",
